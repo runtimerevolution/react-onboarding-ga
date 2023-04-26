@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TmdbApiClient } from '@services'
-import { TrendingHeader, TrendingMovieCard } from '@components'
+import { SearchField, TrendingHeader, TrendingMovieCard } from '@components'
 
 const TrendingMoviesPage = function () {
   const [timeWindow, setTimeWindow] = useState('day')
@@ -18,6 +18,7 @@ const TrendingMoviesPage = function () {
 
   return (
     <>
+      <SearchField />
       <TrendingHeader
         timeWindow={timeWindow}
         updateTimeWindow={updateTimeWindow}
