@@ -1,3 +1,4 @@
+import SearchResultsPage from './SearchResultsPage'
 import TrendingMoviesPage from './TrendingMoviesPage'
 
-export { TrendingMoviesPage }
+export { SearchResultsPage, TrendingMoviesPage }

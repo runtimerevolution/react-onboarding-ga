@@ -1,17 +1,21 @@
 import { Button, TextField } from '@mui/material'
+import { Form } from 'react-router-dom'
 
 const SearchField = function () {
   return (
-    <div className="search-container">
+    <Form className="search-container" action="/search">
       <TextField
         id="search-query"
+        name="query"
         label="TV shows, movies, and people"
         variant="outlined"
       />
       <div className="search-btn-container">
-        <Button variant="contained">Search</Button>
+        <Button type="submit" variant="contained">
+          Search
+        </Button>
       </div>
-    </div>
+    </Form>
   )
 }
 

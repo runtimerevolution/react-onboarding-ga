@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { TrendingMoviesPage } from '@views'
+import { SearchResultsPage, TrendingMoviesPage } from '@views'
 import './index.css'
 
 const darkTheme = createTheme({
@@ -15,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <TrendingMoviesPage />,
+  },
+  {
+    path: '/search',
+    element: <SearchResultsPage />,
   },
 ])
 
