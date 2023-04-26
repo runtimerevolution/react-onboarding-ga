@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import Constants from '../utils/Constants'
-import TrendingHeader from '../components/TrendingHeader'
-import TrendingMovieCard from '../components/TrendingMovieCard'
+import { Constants } from '@utils'
+import { TrendingHeader, TrendingMovieCard } from '@components'
 
 const TrendingMoviesPage = function () {
   const [timeWindow, setTimeWindow] = useState('day')
