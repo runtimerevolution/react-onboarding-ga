@@ -1,9 +1,9 @@
-import TrendingMovies from './TrendingMovies'
+import TrendingMoviesPage from './views/TrendingMoviesPage'
 
 function App() {
   return (
     <>
-      <TrendingMovies />
+      <TrendingMoviesPage />
     </>
   )
 }
