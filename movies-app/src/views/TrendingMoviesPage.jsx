@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Constants } from '@utils'
+import { TmdbApiClient } from '@services'
 import { TrendingHeader, TrendingMovieCard } from '@components'
 
 const TrendingMoviesPage = function () {
@@ -7,21 +7,7 @@ const TrendingMoviesPage = function () {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch(
-      `${Constants.TMDB_ENDPOINT}trending/movie/${timeWindow}?api_key=${Constants.API_KEY}`
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-        throw res
-      })
-      .then((data) => {
-        setData(data.results)
-      })
-      .catch((error) => {
-        console.log(`error fetching trending movies: ${error}`)
-      })
+    TmdbApiClient.fetchTrendingMovies(timeWindow).then((data) => setData(data))
   }, [timeWindow])
 
   const updateTimeWindow = function (event, newTimeWindow) {
