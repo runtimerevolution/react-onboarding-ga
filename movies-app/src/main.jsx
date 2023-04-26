@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import App from './App'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { TrendingMoviesPage } from '@views'
 import './index.css'
 
 const darkTheme = createTheme({
@@ -10,8 +11,15 @@ const darkTheme = createTheme({
   },
 })
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <TrendingMoviesPage />,
+  },
+])
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ThemeProvider theme={darkTheme}>
-    <App />
+    <RouterProvider router={router} />
   </ThemeProvider>
 )
