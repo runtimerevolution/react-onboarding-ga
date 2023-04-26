@@ -25,7 +25,7 @@ const TrendingMoviesPage = function () {
       <div className="top-container">
         {data.slice(0, 10).map((movieObj, i) => (
           <TrendingMovieCard
-            key={i + 1}
+            key={movieObj.id}
             topNumber={i + 1}
             posterPath={movieObj.poster_path}
           />
