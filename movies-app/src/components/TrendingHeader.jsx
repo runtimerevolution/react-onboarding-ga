@@ -1,5 +1,5 @@
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import StyledToggleButton from './StyledToggleButton'
+import { ToggleButton } from '@mui/material'
 
 const TrendingHeader = function ({ timeWindow, updateTimeWindow }) {
   return (
@@ -11,12 +11,12 @@ const TrendingHeader = function ({ timeWindow, updateTimeWindow }) {
         onChange={updateTimeWindow}
         aria-label="trending time window"
       >
-        <StyledToggleButton value="day" aria-label="day">
+        <ToggleButton value="day" aria-label="day">
           day
-        </StyledToggleButton>
-        <StyledToggleButton value="week" aria-label="week">
+        </ToggleButton>
+        <ToggleButton value="week" aria-label="week">
           week
-        </StyledToggleButton>
+        </ToggleButton>
       </ToggleButtonGroup>
     </>
   )

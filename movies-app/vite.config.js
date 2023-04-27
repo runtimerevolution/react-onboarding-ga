@@ -10,6 +10,7 @@ export default defineConfig({
       '@components': resolve(__dirname, 'src/components'),
       '@services': resolve(__dirname, 'src/services'),
       '@utils': resolve(__dirname, 'src/utils'),
+      '@views': resolve(__dirname, 'src/views'),
     },
   },
   plugins: [react()],

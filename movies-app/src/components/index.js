@@ -1,5 +1,5 @@
-import StyledToggleButton from './StyledToggleButton'
+import SearchField from './SearchHeader'
 import TrendingHeader from './TrendingHeader'
 import TrendingMovieCard from './TrendingMovieCard'
 
-export { StyledToggleButton, TrendingHeader, TrendingMovieCard }
+export { SearchField, TrendingHeader, TrendingMovieCard }
