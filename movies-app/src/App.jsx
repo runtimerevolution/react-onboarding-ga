@@ -1,7 +1,11 @@
-import Button from '@mui/material/Button'
+import TrendingMoviesPage from './views/TrendingMoviesPage'
 
 function App() {
-  return <Button variant="contained">Click me!</Button>
+  return (
+    <>
+      <TrendingMoviesPage />
+    </>
+  )
 }
 
 export default App

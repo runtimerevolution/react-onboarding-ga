@@ -47,6 +47,25 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.top-container {
+  display: flex;
+  width: 100%;
+  overflow: scroll;
+}
+
+.trending-movie-container {
+  display: flex;
+  width: 400px;
+  height: 300px;
+  margin: 30px;
+}
+
+.trending-top-number {
+  color: #242424;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  font-size: 10em;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
