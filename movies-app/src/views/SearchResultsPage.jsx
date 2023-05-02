@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { TmdbApiClient } from '@services'
 import { Constants } from '@utils'
 
@@ -9,12 +9,17 @@ const SearchResultsPage = function () {
   const nrImagesLoaded = useRef(0)
   const [searchParams] = useSearchParams()
   const queryParam = searchParams.get('query')
+  const navigate = useNavigate()
 
   const onCompleteImg = function () {
     nrImagesLoaded.current++
     if (nrImagesLoaded.current === data.length) {
       setLoading(false)
     }
+  }
+
+  const onClickImg = function (movieId) {
+    navigate(`/media/${movieId}`)
   }
 
   useEffect(() => {
@@ -48,6 +53,9 @@ const SearchResultsPage = function () {
             className="search-result-img"
             src={`${Constants.IMAGE_API_ENDPOINT}${item.poster_path}`}
             alt={`search result ${item.title || item.name}`}
+            onClick={() => {
+              onClickImg(item.id)
+            }}
             onLoad={onCompleteImg}
             onError={onCompleteImg}
           />

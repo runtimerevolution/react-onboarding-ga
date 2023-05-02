@@ -66,6 +66,10 @@ button:focus-visible {
   font-size: 10em;
 }
 
+.trending-movie-img, .search-result-img {
+  cursor: pointer;
+}
+
 .search-container {
   margin: 30px 0px;
   display: flex;
