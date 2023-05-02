@@ -20,7 +20,7 @@ const TmdbApiClient = {
   },
   search: function (queryString) {
     return fetch(
-      `${Constants.TMDB_ENDPOINT}search/multi?api_key=${Constants.API_KEY}&query=${queryString}`
+      `${Constants.TMDB_ENDPOINT}search/movie?api_key=${Constants.API_KEY}&query=${queryString}`
     )
       .then((res) => {
         if (res.ok) {
