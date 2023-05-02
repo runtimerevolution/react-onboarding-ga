@@ -35,6 +35,23 @@ const TmdbApiClient = {
         console.log(`error searching: ${error}`)
       })
   },
+  fetchMovieDetails: function (movieId) {
+    return fetch(
+      `${Constants.TMDB_ENDPOINT}movie/${movieId}?api_key=${Constants.API_KEY}`
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+        throw res
+      })
+      .then((data) => {
+        return data
+      })
+      .catch((error) => {
+        console.log(`error fetching movie details: ${error}`)
+      })
+  },
 }
 
 export default TmdbApiClient
