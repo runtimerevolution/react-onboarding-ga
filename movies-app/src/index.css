@@ -84,6 +84,17 @@ button:focus-visible {
   margin: 40px 20px;
 }
 
+.search-result-img {
+  width: 250px;
+  margin-bottom: 30px;
+}
+
+.search-results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
