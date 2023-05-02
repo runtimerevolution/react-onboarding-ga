@@ -33,8 +33,11 @@ const SearchResultsPage = function () {
 
   return (
     <>
-      {loading && <span>loading...</span>}
-      {!loading && data.length === 0 && <span>No results found.</span>}
+      {loading ? (
+        <span>loading...</span>
+      ) : (
+        data.length === 0 && <span>No results found.</span>
+      )}
       <div
         className="search-results-container"
         style={{ display: loading ? 'none' : 'flex' }}
