@@ -11,10 +11,10 @@ const TrendingHeader = function ({ timeWindow, updateTimeWindow }) {
         onChange={updateTimeWindow}
         aria-label="trending time window"
       >
-        <ToggleButton value="day" aria-label="day">
+        <ToggleButton value="Day" aria-label="day">
           day
         </ToggleButton>
-        <ToggleButton value="week" aria-label="week">
+        <ToggleButton value="Week" aria-label="week">
           week
         </ToggleButton>
       </ToggleButtonGroup>
