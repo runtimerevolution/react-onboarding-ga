@@ -1,6 +1,5 @@
 const Constants = {
-  API_KEY: import.meta.env.VITE_TMDB_KEY,
-  IMAGE_API_ENDPOINT: import.meta.env.VITE_IMAGE_API_ENDPOINT,
+  TMDB_API_URI: import.meta.env.VITE_TMDB_URI,
 }
 
 export default Constants

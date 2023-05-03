@@ -1,12 +1,10 @@
-import Constants from '../utils/Constants'
-
 const TrendingMovieCard = function ({ topNumber, posterPath, movieId }) {
   return (
     <div className="trending-movie-container">
       <span className="trending-top-number">{topNumber}</span>
       <img
         className="trending-movie-img"
-        src={`${Constants.IMAGE_API_ENDPOINT}${posterPath}`}
+        src={`${posterPath}`}
         alt="trending movie"
       />
     </div>
