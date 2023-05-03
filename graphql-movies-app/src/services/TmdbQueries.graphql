@@ -1,0 +1,17 @@
+query GetTrendingMovies($timeWindow: TimeWindow!) {
+  trending(timeWindow: $timeWindow) {
+    edges {
+      node {
+        __typename
+        ... on Movie {
+          id
+          images {
+            posters {
+              image(size: Original)
+            }
+          }
+        }
+      }
+    }
+  }
+}
