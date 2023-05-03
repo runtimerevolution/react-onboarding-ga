@@ -1192,6 +1192,14 @@ update-browserslist-db@^1.0.10:
     escalade "^3.1.1"
     picocolors "^1.0.0"
 
+vite-plugin-graphql-loader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-graphql-loader/-/vite-plugin-graphql-loader-2.0.0.tgz#fc038b3317009b5cd4000860e4342ebde7a0823e"
+  integrity sha512-NyZUwwoH7rfSt6rEauLxjqfwTFr3tKxGSmNnb7CqeCgxmB06sQn11WPOwdNak+EkRloG1qfZIioXYYXBmnry0Q==
+  dependencies:
+    graphql "^16.6.0"
+    graphql-tag "^2.12.6"
+
 vite@^4.2.0:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/vite/-/vite-4.3.4.tgz#1c518d763d5a700d890c3a19ab59220f06e7a7d5"
