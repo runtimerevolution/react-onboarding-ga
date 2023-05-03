@@ -66,6 +66,10 @@ button:focus-visible {
   font-size: 10em;
 }
 
+.trending-movie-img, .search-result-img {
+  cursor: pointer;
+}
+
 .search-container {
   margin: 30px 0px;
   display: flex;
@@ -93,6 +97,27 @@ button:focus-visible {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.width-300 {
+  width: 300px;
+}
+
+.m-30 {
+  margin: 30px;
+}
+
+.italic-title {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.width-70p {
+  width: 70%;
+}
+
+.gray {
+  color: gray;
 }
 
 @media (prefers-color-scheme: light) {

@@ -7,7 +7,7 @@ const SearchField = function () {
       <TextField
         id="search-query"
         name="query"
-        label="TV shows, movies, and people"
+        label="Movies"
         variant="outlined"
       />
       <div className="search-btn-container">

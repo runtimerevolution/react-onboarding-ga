@@ -29,6 +29,7 @@ const TrendingMoviesPage = function () {
             key={movieObj.id}
             topNumber={i + 1}
             posterPath={movieObj.poster_path}
+            movieId={movieObj.id}
           />
         ))}
       </div>
