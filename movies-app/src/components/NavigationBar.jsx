@@ -18,6 +18,10 @@ const NavigationBar = function () {
     navigate('/')
   }
 
+  const navigateLibrary = function () {
+    navigate('/library')
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -36,7 +40,9 @@ const NavigationBar = function () {
               Home
             </Button>
           )}
-          <Button variant="text">Library</Button>
+          <Button variant="text" onClick={navigateLibrary}>
+            Library
+          </Button>
           {queryParam && (
             <Typography
               variant="h6"

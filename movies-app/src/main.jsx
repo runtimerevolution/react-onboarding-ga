@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import {
   DetailsPage,
+  LibraryPage,
   Root,
   SearchResultsPage,
   TrendingMoviesPage,
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/media/:id',
         element: <DetailsPage />,
+      },
+      {
+        path: '/library',
+        element: <LibraryPage />,
       },
     ],
   },
