@@ -3,6 +3,7 @@ const Constants = {
   TMDB_ENDPOINT: import.meta.env.VITE_TMDB_ENDPOINT,
   IMAGE_API_ENDPOINT: import.meta.env.VITE_IMAGE_API_ENDPOINT,
   LIBRARY_ENDPOINT: import.meta.env.VITE_LIBRARY_ENDPOINT,
+  PROD: import.meta.env.VITE_PROD === 'true',
 }
 
 export default Constants

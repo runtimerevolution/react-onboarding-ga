@@ -1,5 +1,6 @@
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
+import { Constants } from '@utils'
 
 const NavigationBar = function () {
   const navigate = useNavigate()
@@ -42,14 +43,16 @@ const NavigationBar = function () {
           >
             Home
           </Button>
-          <Button
-            variant="text"
-            onClick={() => {
-              navigateToPath('/library')
-            }}
-          >
-            Library
-          </Button>
+          {!Constants.PROD && (
+            <Button
+              variant="text"
+              onClick={() => {
+                navigateToPath('/library')
+              }}
+            >
+              Library
+            </Button>
+          )}
           {queryParam && (
             <Typography
               variant="h6"
