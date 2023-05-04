@@ -1,6 +1,16 @@
-import { useState } from 'react'
+import countryList from 'react-select-country-list'
+import { useMemo, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { Button, Stack, TextField, Typography } from '@mui/material'
+import {
+  Button,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Select,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -9,6 +19,7 @@ import { LibraryApiClient } from '@services'
 const LibraryPage = function () {
   const [res, setRes] = useState()
   const [dateError, setDateError] = useState(false)
+  const countryOptions = useMemo(() => countryList().getData(), [])
   const { control, handleSubmit } = useForm({
     defaultValues: {
       name: '',
@@ -75,14 +86,20 @@ const LibraryPage = function () {
                   name="nationality"
                   control={control}
                   render={({ field }) => (
-                    <TextField
-                      id="nationality-text-field"
-                      className="width-300"
-                      label="Nationality"
-                      variant="outlined"
-                      {...field}
-                      required
-                    />
+                    <FormControl sx={{ minWidth: 300 }}>
+                      <InputLabel id="country-select-label">Country</InputLabel>
+                      <Select
+                        labelId="country-select-label"
+                        id="country-select"
+                        label="Country"
+                        {...field}
+                        required
+                      >
+                        {countryOptions.map((item) => (
+                          <MenuItem value={item.label}>{item.label}</MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
                   )}
                 />
                 <Controller
