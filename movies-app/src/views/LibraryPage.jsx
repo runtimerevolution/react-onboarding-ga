@@ -8,17 +8,28 @@ import { LibraryApiClient } from '@services'
 
 const LibraryPage = function () {
   const [res, setRes] = useState()
+  const [dateError, setDateError] = useState(false)
   const { control, handleSubmit } = useForm({
     defaultValues: {
       name: '',
       biography: '',
       nationality: '',
-      birth_date: '',
+      birth_date: null,
     },
   })
 
   const onSubmit = function (data) {
+    if (!data.birth_date) {
+      setDateError(true)
+      return
+    }
+
     data.birth_date = data.birth_date.format('YYYY-MM-DD')
+    if (data.birth_date.includes('Invalid')) {
+      setDateError(true)
+      return
+    }
+
     LibraryApiClient.createAuthor(data).then((res) => setRes(res))
   }
 
@@ -40,6 +51,7 @@ const LibraryPage = function () {
                     label="Name"
                     variant="outlined"
                     {...field}
+                    required
                   />
                 )}
               />
@@ -54,6 +66,7 @@ const LibraryPage = function () {
                     multiline
                     rows={10}
                     {...field}
+                    required
                   />
                 )}
               />
@@ -68,6 +81,7 @@ const LibraryPage = function () {
                       label="Nationality"
                       variant="outlined"
                       {...field}
+                      required
                     />
                   )}
                 />
@@ -76,7 +90,17 @@ const LibraryPage = function () {
                   control={control}
                   render={({ field }) => (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DatePicker label="Birth Date" {...field} />
+                      <DatePicker
+                        label="Birth Date"
+                        {...field}
+                        slotProps={{
+                          textField: {
+                            variant: 'outlined',
+                            error: dateError,
+                          },
+                        }}
+                        disableFuture
+                      />
                     </LocalizationProvider>
                   )}
                 />
