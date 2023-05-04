@@ -20,9 +20,9 @@ const NavigationBar = function () {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {canGoBack && (
-        <AppBar position="static">
-          <Toolbar>
+      <AppBar position="static">
+        <Toolbar>
+          {canGoBack && (
             <Button
               variant="outlined"
               sx={{ marginRight: '30px' }}
@@ -30,23 +30,24 @@ const NavigationBar = function () {
             >
               Back
             </Button>
-            {!isHome && (
-              <Button variant="text" onClick={navigateHome}>
-                Home
-              </Button>
-            )}
-            {queryParam && (
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1, marginLeft: 3 }}
-              >
-                {queryParam}
-              </Typography>
-            )}
-          </Toolbar>
-        </AppBar>
-      )}
+          )}
+          {!isHome && (
+            <Button variant="text" onClick={navigateHome}>
+              Home
+            </Button>
+          )}
+          <Button variant="text">Library</Button>
+          {queryParam && (
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, marginLeft: 3 }}
+            >
+              {queryParam}
+            </Typography>
+          )}
+        </Toolbar>
+      </AppBar>
     </Box>
   )
 }
