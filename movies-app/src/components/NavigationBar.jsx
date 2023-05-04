@@ -8,18 +8,17 @@ const NavigationBar = function () {
 
   const queryParam = searchParams.get('query')
   const canGoBack = location.key !== 'default'
-  const isHome = location.pathname === '/'
 
   const navigateBack = function () {
     navigate(-1)
   }
 
-  const navigateHome = function () {
-    navigate('/')
-  }
-
-  const navigateLibrary = function () {
-    navigate('/library')
+  const navigateToPath = function (path) {
+    if (location.pathname === path) {
+      navigate(0)
+    } else {
+      navigate(path)
+    }
   }
 
   return (
@@ -35,12 +34,20 @@ const NavigationBar = function () {
               Back
             </Button>
           )}
-          {!isHome && (
-            <Button variant="text" onClick={navigateHome}>
-              Home
-            </Button>
-          )}
-          <Button variant="text" onClick={navigateLibrary}>
+          <Button
+            variant="text"
+            onClick={() => {
+              navigateToPath('/')
+            }}
+          >
+            Home
+          </Button>
+          <Button
+            variant="text"
+            onClick={() => {
+              navigateToPath('/library')
+            }}
+          >
             Library
           </Button>
           {queryParam && (
