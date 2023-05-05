@@ -18,9 +18,13 @@ import { LibraryApiClient } from '@services'
 
 const LibraryPage = function () {
   const [res, setRes] = useState()
-  const [dateError, setDateError] = useState(false)
   const countryOptions = useMemo(() => countryList().getData(), [])
-  const { control, handleSubmit } = useForm({
+  const {
+    control,
+    setError,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
     defaultValues: {
       name: '',
       biography: '',
@@ -30,18 +34,38 @@ const LibraryPage = function () {
   })
 
   const onSubmit = function (data) {
+    if (isValid(data)) {
+      LibraryApiClient.createAuthor(data).then((res) => setRes(res))
+    }
+  }
+
+  const isValid = function (data) {
+    let valid = true
+
     if (!data.birth_date) {
-      setDateError(true)
-      return
+      setError('birth_date', { type: 'custom' })
+      valid = false
     }
 
     data.birth_date = data.birth_date.format('YYYY-MM-DD')
-    if (data.birth_date.includes('Invalid')) {
-      setDateError(true)
-      return
+    if (
+      data.birth_date.includes('Invalid') ||
+      new Date(data.birth_date) > new Date()
+    ) {
+      setError('birth_date', { type: 'custom' })
+      valid = false
     }
 
-    LibraryApiClient.createAuthor(data).then((res) => setRes(res))
+    if (data.name.trim() === '') {
+      setError('name', { type: 'custom' })
+      valid = false
+    }
+    if (data.biography.trim() === '') {
+      setError('biography', { type: 'custom' })
+      valid = false
+    }
+
+    return valid
   }
 
   return (
@@ -58,6 +82,7 @@ const LibraryPage = function () {
                 control={control}
                 render={({ field }) => (
                   <TextField
+                    error={errors.name !== undefined}
                     id="name-text-field"
                     label="Name"
                     variant="outlined"
@@ -71,6 +96,7 @@ const LibraryPage = function () {
                 control={control}
                 render={({ field }) => (
                   <TextField
+                    error={errors.biography !== undefined}
                     id="biography-text-field"
                     label="Biography"
                     variant="outlined"
@@ -96,7 +122,9 @@ const LibraryPage = function () {
                         required
                       >
                         {countryOptions.map((item) => (
-                          <MenuItem value={item.label}>{item.label}</MenuItem>
+                          <MenuItem key={item.label} value={item.label}>
+                            {item.label}
+                          </MenuItem>
                         ))}
                       </Select>
                     </FormControl>
@@ -113,7 +141,7 @@ const LibraryPage = function () {
                         slotProps={{
                           textField: {
                             variant: 'outlined',
-                            error: dateError,
+                            error: errors.birth_date !== undefined,
                           },
                         }}
                         disableFuture
