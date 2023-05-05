@@ -1,5 +1,6 @@
 import countryList from 'react-select-country-list'
 import { useMemo, useState } from 'react'
+import { isMobile } from 'react-device-detect'
 import { useForm, Controller } from 'react-hook-form'
 import {
   Button,
@@ -107,7 +108,7 @@ const LibraryPage = function () {
                   />
                 )}
               />
-              <Stack direction="row" spacing={5}>
+              <Stack direction={isMobile ? 'column' : 'row'} spacing={5}>
                 <Controller
                   name="nationality"
                   control={control}
