@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { isMobile } from 'react-device-detect'
 import { TmdbApiClient } from '@services'
 import { SearchField, TrendingHeader, TrendingMovieCard } from '@components'
 
@@ -23,7 +24,13 @@ const TrendingMoviesPage = function () {
         timeWindow={timeWindow}
         updateTimeWindow={updateTimeWindow}
       />
-      <div className="top-container">
+      <div
+        className="top-container"
+        style={{
+          flexWrap: isMobile ? 'wrap' : 'nowrap',
+          justifyContent: isMobile ? 'flex-end' : 'flex-start',
+        }}
+      >
         {data.slice(0, 10).map((movieObj, i) => (
           <TrendingMovieCard
             key={movieObj.id}

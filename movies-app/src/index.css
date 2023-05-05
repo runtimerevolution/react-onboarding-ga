@@ -55,6 +55,7 @@ button:focus-visible {
 
 .trending-movie-container {
   display: flex;
+  justify-content: flex-end;
   width: 400px;
   height: 300px;
   margin: 30px;
@@ -63,7 +64,7 @@ button:focus-visible {
 .trending-top-number {
   color: #242424;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-  font-size: 10em;
+  font-size: 7em;
 }
 
 .trending-movie-img, .search-result-img {
