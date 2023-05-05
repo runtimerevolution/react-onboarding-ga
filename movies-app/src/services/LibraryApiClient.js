@@ -6,7 +6,12 @@ const libraryInstance = axios.create({ baseURL: Constants.LIBRARY_ENDPOINT })
 const LibraryApiClient = {
   createAuthor: function (authorData) {
     return libraryInstance
-      .post('/library-api/authors/', authorData)
+      .post('/library-api/authors/', authorData, {
+        auth: {
+          username: Constants.LIBRARY_USER,
+          password: Constants.LIBRARY_SECRET,
+        },
+      })
       .then((res) => {
         if (res.status === 201) {
           return res
