@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { Constants } from '@utils'
 import {
   DetailsPage,
+  LibraryPage,
   Root,
   SearchResultsPage,
   TrendingMoviesPage,
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: '/media/:id',
         element: <DetailsPage />,
+      },
+      {
+        path: '/library',
+        element: Constants.PROD ? (
+          <Navigate replace to={'/'} />
+        ) : (
+          <LibraryPage />
+        ),
       },
     ],
   },

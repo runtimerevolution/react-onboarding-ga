@@ -1,5 +1,6 @@
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
+import { Constants } from '@utils'
 
 const NavigationBar = function () {
   const navigate = useNavigate()
@@ -8,21 +9,24 @@ const NavigationBar = function () {
 
   const queryParam = searchParams.get('query')
   const canGoBack = location.key !== 'default'
-  const isHome = location.pathname === '/'
 
   const navigateBack = function () {
     navigate(-1)
   }
 
-  const navigateHome = function () {
-    navigate('/')
+  const navigateToPath = function (path) {
+    if (location.pathname === path) {
+      navigate(0)
+    } else {
+      navigate(path)
+    }
   }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {canGoBack && (
-        <AppBar position="static">
-          <Toolbar>
+      <AppBar position="static">
+        <Toolbar>
+          {canGoBack && (
             <Button
               variant="outlined"
               sx={{ marginRight: '30px' }}
@@ -30,23 +34,36 @@ const NavigationBar = function () {
             >
               Back
             </Button>
-            {!isHome && (
-              <Button variant="text" onClick={navigateHome}>
-                Home
-              </Button>
-            )}
-            {queryParam && (
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1, marginLeft: 3 }}
-              >
-                {queryParam}
-              </Typography>
-            )}
-          </Toolbar>
-        </AppBar>
-      )}
+          )}
+          <Button
+            variant="text"
+            onClick={() => {
+              navigateToPath('/')
+            }}
+          >
+            Home
+          </Button>
+          {!Constants.PROD && (
+            <Button
+              variant="text"
+              onClick={() => {
+                navigateToPath('/library')
+              }}
+            >
+              Library
+            </Button>
+          )}
+          {queryParam && (
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, marginLeft: 3 }}
+            >
+              {queryParam}
+            </Typography>
+          )}
+        </Toolbar>
+      </AppBar>
     </Box>
   )
 }

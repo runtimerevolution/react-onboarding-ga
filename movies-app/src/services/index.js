@@ -1,3 +1,4 @@
+import LibraryApiClient from './LibraryApiClient'
 import TmdbApiClient from './TmdbApiClient'
 
-export { TmdbApiClient }
+export { LibraryApiClient, TmdbApiClient }
